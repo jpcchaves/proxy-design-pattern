@@ -1,6 +1,7 @@
 package br.com.designpattern.proxy.service;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -8,16 +9,14 @@ import java.util.UUID;
 
 @Slf4j
 @Getter
+@Setter
 @Service("configurationDummyService")
 public class ConfigurationDummyService {
 
-    private final String serviceId;
+    private String serviceId;
 
     public ConfigurationDummyService() {
-        String serviceId = UUID.randomUUID().toString();
-        this.serviceId = serviceId;
-
-        log.info("[ConfigurationDummyService] Iniciando configuration dummy service com o ID: {}", serviceId);
+        this.serviceId = UUID.randomUUID().toString();
     }
 
     public void logDelegateId() {

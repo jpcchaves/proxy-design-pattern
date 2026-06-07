@@ -28,8 +28,7 @@ public class DelegateController {
 
     @GetMapping("/update-delegate")
     public ResponseEntity<?> updateDelegate() {
-        proxy.updateDelegate();
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(proxy.updateDelegate());
     }
 
     @GetMapping("/current-delegate")
@@ -41,13 +40,11 @@ public class DelegateController {
     public ResponseEntity<?> getAmount() {
         service.logDelegateId();
 
-        Map<String, ?> beansConfigurationProxy = applicationContext.getBeansOfType(ConfigurationProxy.class);
         Map<String, ?> beansConfigurationDummyService = applicationContext.getBeansOfType(ConfigurationDummyService.class);
 
         return ResponseEntity.ok(Map.of(
                 "proxyDelegateId", proxy.currentDelegateId(),
-                "beansConfigurationDummyService", beansConfigurationDummyService,
-                "beansConfigurationProxy", beansConfigurationProxy
+                "beansConfigurationDummyService", beansConfigurationDummyService
         ));
     }
 

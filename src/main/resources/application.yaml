@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: proxy
+
+  main:
+    allow-bean-definition-overriding: true
